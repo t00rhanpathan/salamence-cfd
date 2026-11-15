@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+# OpenFOAM bulk output: keep case setup and postProcessing summaries, not fields
+cfd/**/processor*/
+cfd/**/[1-9]*/
+cfd/**/constant/polyMesh/
+cfd/**/log.*
+*.foam
+# LaTeX build
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.synctex.gz
