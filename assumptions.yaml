@@ -1,0 +1,33 @@
+# Single source of truth for every input number. Scripts read this file; nobody hand-types these values elsewhere.
+# tag: published = official Pokedex figure (verify before citing); assumed = our choice, justified in assumptions_notes.md; derived = computed from the others
+version: 0
+air:
+  rho_kg_m3: 1.225        # sea-level ISA, assumed
+  nu_m2_s: 1.5e-5         # kinematic viscosity, assumed
+  g_m_s2: 9.81
+forms:
+  salamence:
+    height_m:     {value: 1.5,   tag: published}
+    mass_kg:      {value: 102.6, tag: published}
+    span_m:       {value: 4.2,   tag: assumed, sweep: [0.75, 1.0, 1.25]}
+    wing_area_m2: {value: 3.2,   tag: assumed}
+    le_sweep_deg: {value: 15,    tag: assumed}
+    planform:     {value: two separate tapered wings, rooted high on torso, tag: assumed}
+    airfoil:      {value: NACA4412, tag: assumed}
+  mega_salamence:
+    height_m:     {value: 1.8,   tag: published}
+    mass_kg:      {value: 112.6, tag: published}
+    span_m:       {value: 3.6,   tag: assumed, sweep: [0.75, 1.0, 1.25]}
+    wing_area_m2: {value: 3.6,   tag: assumed}
+    le_sweep_deg: {value: 45,    tag: assumed}
+    planform:     {value: single fused crescent wing, curved trailing edge, tag: assumed}
+    airfoil:      {value: NACA4412, tag: assumed}
+flight:
+  cruise_speed_m_s: 32      # derived: CL = 0.5 at the loadings above
+  cl_cruise: 0.5
+  cl_max_assumed: 1.3
+lowfi_sweep:
+  alpha_deg: {start: -4, stop: 20, step: 2}
+cfd_cases:
+  alpha_deg: [4, 10, 18]
+  mesh_study: {form: mega_salamence, alpha_deg: 10, levels: [coarse, medium, fine]}
